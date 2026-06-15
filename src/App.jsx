@@ -384,68 +384,104 @@ doc.text(`Generated On : ${today}`, 15, 90);
 };
   return (
     <div className={darkMode ? "container dark" : "container"}> 
-      <div className="top-bar">
+      <div className="header-card">
 
-        <button onClick={toggleDarkMode}>{darkMode ? "☀️" : "🌙"}</button>
+        <div className="logo-section">
+         <img
+          src="/anna-logo.png"
+          alt="Anna University"
+          className="logo" />
 
-        <h1>Anna University CGPA Calculator</h1>
+         <div>
+          <h1>Anna University</h1>
+          <p>CGPA Calculator</p>
+         </div>
+       </div>
 
-        <button onClick={handleLogout}>Logout</button>
+       <div className="header-actions">
+
+         <button
+          className="icon-btn"
+          onClick={toggleDarkMode}>🌙
+         <span>Dark Mode</span>
+        </button>
+
+        <button
+          className="icon-btn"
+          onClick={handleLogout}>🚪
+         <span>Logout</span>
+        </button>
+
       </div>
 
-      <h3>Welcome, {studentName}</h3>
+   </div>
+      <div className="welcome-card">
+              Welcome, <span>{studentName} 👋 </span>
+     </div>
 
        <br /><br />
-      <input
-        ref={subjectInputRef}
-        type="text"
-        placeholder="Subject Name"
-        value={subject}
-        onChange={(e) => setSubject(e.target.value)}
-      />
 
-      <br /><br />
+       <div className="subject-card">
 
-      <select
-        value={credit}
-        onChange={(e) => setCredit(e.target.value)}
-      >
-        <option value="">Select Credit</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+  < h2 className="section-title">
+  📖 Add Subject
+  </h2>
 
-      <br /><br />
+  <label>Subject Name</label>
 
-      <select
-        value={grade}
-        onChange={(e) => setGrade(e.target.value)}
-      >
-        <option value="">Select Grade</option>
-        <option value="O">O</option>
-        <option value="A+">A+</option>
-        <option value="A">A</option>
-        <option value="B+">B+</option>
-        <option value="B">B</option>
-        <option value="C">C</option>
-        <option value="U">U</option>
-      </select>
+  <input
+    ref={subjectInputRef}
+    type="text"
+    placeholder="Enter Your Name"
+    value={subject}
+    onChange={(e) => setSubject(e.target.value)}
+  />
 
-      <br /><br />
+  <div className="select-row">
+   <div>
+    <label>Select Credit</label>
+    <select
+      value={credit}
+      onChange={(e) => setCredit(e.target.value)}>
+      <option value="">Select Credit</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+   </div>
+   <div>
+    <label>Select Grade</label>
+    <select
+      value={grade}
+      onChange={(e) => setGrade(e.target.value)}>
+      <option value="">Select Grade</option>
+      <option value="O">O</option>
+      <option value="A+">A+</option>
+      <option value="A">A</option>
+      <option value="B+">B+</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="U">U</option>
+    </select>
+   </div>
 
-      <button onClick={isEditing ? updateSubject : addSubject}>
-         {isEditing ? "Update Subject" : "Add Subject"}
-      </button>
+  </div>
 
-        
+  <button
+    className="add-btn"
+    onClick={isEditing ? updateSubject : addSubject}>
+    ➕ {isEditing ? "Update Subject" : "Add Subject"}
+  </button>
 
+   </div>
+      
       <hr />
       <br></br>
-
-      <h2>Subjects</h2>
+      
+      <div className="subjects-card">
+       <h2>📋Subjects</h2>
 
       {subjects.length > 0 && (
   <div className="subjects-table-wrapper">
@@ -487,12 +523,13 @@ doc.text(`Generated On : ${today}`, 15, 90);
         onClick={calculateGpa}>
         Calculate GPA
       </button>
+      </div>
       <br></br>
 
       <div className="card-container">
-        <div className="card">
-          <h3>Current GPA</h3>
-          <h2>{gpa}</h2>
+        <div className="gpa-card">
+         <h3>📊 Current GPA</h3>
+         <h2>{gpa}</h2>
         </div>
       </div><br></br>
 
@@ -543,42 +580,55 @@ doc.text(`Generated On : ${today}`, 15, 90);
       <br></br>
 
        <div className="card-container">
-        <div className="card">
-           <h3>Final CGPA</h3>
-           <h2>{cgpa}</h2>
-        </div>
+         <div className="gpa-card">
+          <h3>🎓 Final CGPA</h3>
+          <h2>{cgpa}</h2>
+         </div>
        </div>
 
       <br></br>
-      <h2>Statistics</h2>
+      <h2>📈 Statistics</h2>
 
-      <p>Total Semesters: {semesterGpas.length}</p>
+<div className="stats-grid">
 
-      <p>
-        Highest GPA:{" "}
-        {semesterGpas.length > 0
-          ? Math.max(...semesterGpas)
-         : 0}
-      </p>
+  <div className="stat-card">
+    <h3>{semesterGpas.length}</h3>
+    <p>Total Semesters</p>
+  </div>
 
-      <p>
-      Lowest GPA:{" "}
+  <div className="stat-card">
+    <h3>
       {semesterGpas.length > 0
-      ? Math.min(...semesterGpas)
-       : 0}
-      </p>
+        ? Math.max(...semesterGpas)
+        : 0}
+    </h3>
+    <p>Highest GPA</p>
+  </div>
 
-      <p>
-        Average GPA:{" "}
-        {semesterGpas.length > 0
-         ? (
-        semesterGpas.reduce(
-          (sum, gpa) => sum + gpa,
-          0
-          ) / semesterGpas.length
+  <div className="stat-card">
+    <h3>
+      {semesterGpas.length > 0
+        ? Math.min(...semesterGpas)
+        : 0}
+    </h3>
+    <p>Lowest GPA</p>
+  </div>
+
+  <div className="stat-card">
+    <h3>
+      {semesterGpas.length > 0
+        ? (
+            semesterGpas.reduce(
+              (sum, gpa) => sum + gpa,
+              0
+            ) / semesterGpas.length
           ).toFixed(2)
-          : 0}
-      </p>
+        : 0}
+    </h3>
+    <p>Average GPA</p>
+  </div>
+
+</div>
       <br></br>
       
       <button onClick={() => {
