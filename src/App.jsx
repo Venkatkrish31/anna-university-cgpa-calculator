@@ -384,9 +384,15 @@ doc.text(`Generated On : ${today}`, 15, 90);
 };
   return (
     <div className={darkMode ? "container dark" : "container"}> 
-      <h1>Anna University CGPA Calculator</h1>
-      <button onClick={handleLogout}>Logout</button>
-      
+      <div className="top-bar">
+
+        <button onClick={toggleDarkMode}>{darkMode ? "☀️" : "🌙"}</button>
+
+        <h1>Anna University CGPA Calculator</h1>
+
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+
       <h3>Welcome, {studentName}</h3>
 
        <br /><br />
@@ -434,11 +440,6 @@ doc.text(`Generated On : ${today}`, 15, 90);
          {isEditing ? "Update Subject" : "Add Subject"}
       </button>
 
-
-      
-      <button onClick={toggleDarkMode}>
-         {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
         
 
       <hr />
