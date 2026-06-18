@@ -387,10 +387,6 @@ doc.text(`Generated On : ${today}`, 15, 90);
       <div className="header-card">
 
         <div className="logo-section">
-         <img
-          src="/anna-logo.png"
-          alt="Anna University"
-          className="logo" />
 
          <div>
           <h1>Anna University</h1>
@@ -432,7 +428,7 @@ doc.text(`Generated On : ${today}`, 15, 90);
   <input
     ref={subjectInputRef}
     type="text"
-    placeholder="Enter Your Name"
+    placeholder="Enter Subject Name"
     value={subject}
     onChange={(e) => setSubject(e.target.value)}
   />

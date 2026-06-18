@@ -4,7 +4,8 @@ body {
   min-height: 100vh;
   font-family: "Segoe UI", sans-serif;
   background: linear-gradient(160deg, #111F35 0%, #8A244B 50%, #111F35 100%);
-  color: rgb(10, 8, 8);
+  color: white;
+  
 }
 
 .container {
